@@ -36,6 +36,10 @@ public class LocalTrabajo extends Entity<LocalTrabajoID> {
         }
     }
 
+    public void agregarTelefono(Telefono telefono) {
+        this.telefonos.add(Objects.requireNonNull(telefono));
+    }
+
     public Nombre nombre() {
         return nombre;
     }

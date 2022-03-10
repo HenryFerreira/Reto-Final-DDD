@@ -30,6 +30,10 @@ public class LocalAsociado extends Entity<LocalAsociadoID> {
         }
     }
 
+    public void agregarTelefono(Telefono telefono) {
+        this.telefonos.add(Objects.requireNonNull(telefono));
+    }
+
     public Nombre nombre() {
         return nombre;
     }
