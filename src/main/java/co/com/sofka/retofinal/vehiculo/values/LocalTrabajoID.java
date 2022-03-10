@@ -1,4 +1,6 @@
 package co.com.sofka.retofinal.vehiculo.values;
 
-public class LocalTrabajoID {
+import co.com.sofka.domain.generic.Identity;
+
+public class LocalTrabajoID extends Identity {
 }

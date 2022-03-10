@@ -1,4 +1,6 @@
 package co.com.sofka.retofinal.encargadoventa.values;
 
-public class GarantiaID {
+import co.com.sofka.domain.generic.Identity;
+
+public class GarantiaID extends Identity {
 }

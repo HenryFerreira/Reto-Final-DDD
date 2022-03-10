@@ -1,4 +1,6 @@
 package co.com.sofka.retofinal.encargadoventa.values;
 
-public class EncargadoVentaID {
+import co.com.sofka.domain.generic.Identity;
+
+public class EncargadoVentaID extends Identity {
 }

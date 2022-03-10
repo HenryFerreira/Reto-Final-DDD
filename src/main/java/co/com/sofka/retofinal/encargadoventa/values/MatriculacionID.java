@@ -1,4 +1,6 @@
 package co.com.sofka.retofinal.encargadoventa.values;
 
-public class MatriculacionID {
+import co.com.sofka.domain.generic.Identity;
+
+public class MatriculacionID extends Identity {
 }

@@ -1,4 +1,12 @@
 package co.com.sofka.retofinal.vehiculo.values;
 
-public class FechaEmision {
+import co.com.sofka.domain.generic.ValueObject;
+
+import java.util.Date;
+
+public class FechaEmision implements ValueObject<Date> {
+    @Override
+    public Date value() {
+        return null;
+    }
 }

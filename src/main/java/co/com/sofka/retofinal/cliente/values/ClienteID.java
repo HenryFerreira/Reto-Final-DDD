@@ -1,4 +1,6 @@
 package co.com.sofka.retofinal.cliente.values;
 
-public class ClienteID {
+import co.com.sofka.domain.generic.Identity;
+
+public class ClienteID extends Identity {
 }

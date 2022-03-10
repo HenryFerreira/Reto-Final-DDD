@@ -1,4 +1,12 @@
 package co.com.sofka.retofinal.encargadoventa.values;
 
-public class FechaVenta {
+import co.com.sofka.domain.generic.ValueObject;
+
+import java.util.Date;
+
+public class FechaVenta implements ValueObject<Date> {
+    @Override
+    public Date value() {
+        return null;
+    }
 }

@@ -1,4 +1,10 @@
 package co.com.sofka.retofinal.encargadoventa.values;
 
-public class Objetivos {
+import co.com.sofka.domain.generic.ValueObject;
+
+public class Objetivos implements ValueObject<String> {
+    @Override
+    public String value() {
+        return null;
+    }
 }

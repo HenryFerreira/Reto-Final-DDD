@@ -1,4 +1,6 @@
 package co.com.sofka.retofinal.vehiculo.values;
 
-public class VehiculoID {
+import co.com.sofka.domain.generic.Identity;
+
+public class VehiculoID extends Identity {
 }

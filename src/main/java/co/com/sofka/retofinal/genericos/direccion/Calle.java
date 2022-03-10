@@ -1,4 +1,10 @@
 package co.com.sofka.retofinal.genericos.direccion;
 
-public class Calle {
+import co.com.sofka.domain.generic.ValueObject;
+
+public class Calle implements ValueObject<String> {
+    @Override
+    public String value() {
+        return null;
+    }
 }

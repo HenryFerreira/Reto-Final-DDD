@@ -1,4 +1,6 @@
 package co.com.sofka.retofinal.cliente.values;
 
-public class CompraID {
+import co.com.sofka.domain.generic.Identity;
+
+public class CompraID extends Identity {
 }

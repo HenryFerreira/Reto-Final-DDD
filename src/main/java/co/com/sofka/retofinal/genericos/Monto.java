@@ -1,4 +1,10 @@
 package co.com.sofka.retofinal.genericos;
 
-public class Monto {
+import co.com.sofka.domain.generic.ValueObject;
+
+public class Monto implements ValueObject<Double> {
+    @Override
+    public Double value() {
+        return null;
+    }
 }
