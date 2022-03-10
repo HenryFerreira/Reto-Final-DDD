@@ -21,6 +21,15 @@ public class Venta extends Entity<VentaID> {
         this.monto = monto;
     }
 
+    public String detallesVenta() {
+        return "Detalles de la Venta: \n" +
+                "Identificador de la Venta: " + this.entityId + "\n" +
+                "Identificador del Vehiculo: " + this.vehiculoID + "\n" +
+                "Identificador del Cliente: " + this.clienteID + "\n" +
+                "Fecha de la Venta: " + this.fechaVenta + "\n" +
+                "Monto de la Venta: " + this.monto;
+    }
+
     public VehiculoID vehiculoID() {
         return vehiculoID;
     }

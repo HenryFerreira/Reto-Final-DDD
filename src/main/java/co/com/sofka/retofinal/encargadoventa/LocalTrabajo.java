@@ -7,17 +7,26 @@ import co.com.sofka.retofinal.genericos.direccion.Direccion;
 import co.com.sofka.retofinal.vehiculo.values.LocalTrabajoID;
 
 import java.util.List;
+import java.util.Objects;
 
 public class LocalTrabajo extends Entity<LocalTrabajoID> {
-    private final Nombre nombre;
-    private final Direccion direccion;
-    private final List<Telefono> telefonos;
+    private Nombre nombre;
+    private Direccion direccion;
+    private List<Telefono> telefonos;
 
     public LocalTrabajo(LocalTrabajoID localTrabajoID, Nombre nombre, Direccion direccion, List<Telefono> telefonos) {
         super(localTrabajoID);
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefonos = telefonos;
+    }
+
+    public void actualizarNombre(Nombre nombre) {
+        this.nombre = Objects.requireNonNull(nombre);
+    }
+
+    public void actualizarDireccion(Direccion direccion) {
+        this.direccion = Objects.requireNonNull(direccion);
     }
 
     public Nombre nombre() {
