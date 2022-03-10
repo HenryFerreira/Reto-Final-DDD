@@ -29,6 +29,13 @@ public class LocalTrabajo extends Entity<LocalTrabajoID> {
         this.direccion = Objects.requireNonNull(direccion);
     }
 
+    public void listarTelefonos() {
+        System.out.println("Lista de Telefonos: \n");
+        for (Telefono elemento : this.telefonos) {
+            System.out.println(elemento.value());
+        }
+    }
+
     public Nombre nombre() {
         return nombre;
     }
