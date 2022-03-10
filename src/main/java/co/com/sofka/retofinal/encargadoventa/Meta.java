@@ -15,11 +15,11 @@ public class Meta extends Entity<MetaID> {
         this.bonificacion = bonificacion;
     }
 
-    public Objetivos getObjetivos() {
+    public Objetivos objetivos() {
         return objetivos;
     }
 
-    public Bonificacion getBonificacion() {
+    public Bonificacion bonificacion() {
         return bonificacion;
     }
 }

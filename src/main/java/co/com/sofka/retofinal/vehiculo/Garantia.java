@@ -15,11 +15,11 @@ public class Garantia extends Entity<GarantiaID> {
         this.fechaVigencia = fechaVigencia;
     }
 
-    public FechaEmision getFechaEmision() {
+    public FechaEmision fechaEmision() {
         return fechaEmision;
     }
 
-    public FechaVigencia getFechaVigencia() {
+    public FechaVigencia fechaVigencia() {
         return fechaVigencia;
     }
 }

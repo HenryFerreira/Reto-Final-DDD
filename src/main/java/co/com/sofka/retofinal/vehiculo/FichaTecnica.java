@@ -15,11 +15,11 @@ public class FichaTecnica extends Entity<FichaTecnicaID> {
         this.descripcion = descripcion;
     }
 
-    public Nombre getNombre() {
+    public Nombre nombre() {
         return nombre;
     }
 
-    public Descripcion getDescripcion() {
+    public Descripcion descripcion() {
         return descripcion;
     }
 }

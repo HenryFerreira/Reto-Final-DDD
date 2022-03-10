@@ -18,11 +18,11 @@ public class LocalAsociado extends Entity<LocalAsociadoID> {
         this.telefonos = telefonos;
     }
 
-    public Nombre getNombre() {
+    public Nombre nombre() {
         return nombre;
     }
 
-    public List<Telefono> getTelefonos() {
+    public List<Telefono> telefonos() {
         return telefonos;
     }
 }

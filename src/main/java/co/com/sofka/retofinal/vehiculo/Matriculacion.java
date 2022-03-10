@@ -21,19 +21,19 @@ public class Matriculacion extends Entity<MatriculacionID> {
         this.fechaMatriculacion = fechaMatriculacion;
     }
 
-    public MatriculacionID getMatriculacionID() {
+    public MatriculacionID matriculacionID() {
         return matriculacionID;
     }
 
-    public VehiculoID getVehiculoID() {
+    public VehiculoID vehiculoID() {
         return vehiculoID;
     }
 
-    public Matricula getMatricula() {
+    public Matricula matricula() {
         return matricula;
     }
 
-    public FechaMatriculacion getFechaMatriculacion() {
+    public FechaMatriculacion fechaMatriculacion() {
         return fechaMatriculacion;
     }
 }

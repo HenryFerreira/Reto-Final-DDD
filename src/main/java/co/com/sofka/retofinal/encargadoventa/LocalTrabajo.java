@@ -20,15 +20,15 @@ public class LocalTrabajo extends Entity<LocalTrabajoID> {
         this.telefonos = telefonos;
     }
 
-    public Nombre getNombre() {
+    public Nombre nombre() {
         return nombre;
     }
 
-    public Direccion getDireccion() {
+    public Direccion direccion() {
         return direccion;
     }
 
-    public List<Telefono> getTelefonos() {
+    public List<Telefono> telefonos() {
         return telefonos;
     }
 }

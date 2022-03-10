@@ -21,19 +21,19 @@ public class Venta extends Entity<VentaID> {
         this.monto = monto;
     }
 
-    public VehiculoID getVehiculoID() {
+    public VehiculoID vehiculoID() {
         return vehiculoID;
     }
 
-    public ClienteID getClienteID() {
+    public ClienteID clienteID() {
         return clienteID;
     }
 
-    public FechaVenta getFechaVenta() {
+    public FechaVenta fechaVenta() {
         return fechaVenta;
     }
 
-    public Monto getMonto() {
+    public Monto monto() {
         return monto;
     }
 }
