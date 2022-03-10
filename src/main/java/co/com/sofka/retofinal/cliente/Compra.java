@@ -24,11 +24,11 @@ public class Compra extends Entity<CompraID> {
 
     public String detallesCompra() {
         return "Detalles de la compra:\n" +
-                "Identificador de la Compra: " + this.entityId + "\n" +
-                "Identificador del Vehiculo: " + this.vehiculoID + "\n" +
-                "Identificador del Encargado de la Venta: " + this.encargadoVentaID + "\n" +
-                "Fecha del Pago: " + this.fechaPago + "\n" +
-                "Monto de la compra: " + this.monto;
+                "Identificador de la Compra: " + this.entityId.value() + "\n" +
+                "Identificador del Vehiculo: " + this.vehiculoID.value() + "\n" +
+                "Identificador del Encargado de la Venta: " + this.encargadoVentaID.value() + "\n" +
+                "Fecha del Pago: " + this.fechaPago.value() + "\n" +
+                "Monto de la compra: " + this.monto.value();
     }
 
     public VehiculoID vehiculoID() {

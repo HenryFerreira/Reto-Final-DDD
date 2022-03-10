@@ -23,11 +23,11 @@ public class Venta extends Entity<VentaID> {
 
     public String detallesVenta() {
         return "Detalles de la Venta: \n" +
-                "Identificador de la Venta: " + this.entityId + "\n" +
-                "Identificador del Vehiculo: " + this.vehiculoID + "\n" +
-                "Identificador del Cliente: " + this.clienteID + "\n" +
-                "Fecha de la Venta: " + this.fechaVenta + "\n" +
-                "Monto de la Venta: " + this.monto;
+                "Identificador de la Venta: " + this.entityId.value() + "\n" +
+                "Identificador del Vehiculo: " + this.vehiculoID.value() + "\n" +
+                "Identificador del Cliente: " + this.clienteID.value() + "\n" +
+                "Fecha de la Venta: " + this.fechaVenta.value() + "\n" +
+                "Monto de la Venta: " + this.monto.value();
     }
 
     public VehiculoID vehiculoID() {
