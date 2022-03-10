@@ -7,7 +7,6 @@ import co.com.sofka.retofinal.vehiculo.values.Matricula;
 import co.com.sofka.retofinal.vehiculo.values.VehiculoID;
 
 public class Matriculacion extends Entity<MatriculacionID> {
-    private final MatriculacionID matriculacionID;
     private final VehiculoID vehiculoID;
     private final Matricula matricula;
     private final FechaMatriculacion fechaMatriculacion;
@@ -15,15 +14,19 @@ public class Matriculacion extends Entity<MatriculacionID> {
     public Matriculacion(MatriculacionID matriculacionID, VehiculoID vehiculoID,
                          Matricula matricula, FechaMatriculacion fechaMatriculacion) {
         super(matriculacionID);
-        this.matriculacionID = matriculacionID;
         this.vehiculoID = vehiculoID;
         this.matricula = matricula;
         this.fechaMatriculacion = fechaMatriculacion;
     }
 
-    public MatriculacionID matriculacionID() {
-        return matriculacionID;
+    public String detallesMatriculacion() {
+        return "Detalles de la Matriculación: \n" +
+                "Identificador de la Matriculación: " + this.entityId.value() + "\n" +
+                "Identificador del Vehiculo: " + this.vehiculoID.value() + "\n" +
+                "Matricula asignada: " + this.matricula.value() + "\n" +
+                "Fecha de la matriculación: " + this.fechaMatriculacion.value();
     }
+
 
     public VehiculoID vehiculoID() {
         return vehiculoID;
