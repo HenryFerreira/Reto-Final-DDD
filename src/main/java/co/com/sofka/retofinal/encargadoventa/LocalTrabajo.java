@@ -1,4 +1,4 @@
 package co.com.sofka.retofinal.encargadoventa;
 
-public class Garantia {
+public class LocalTrabajo {
 }
