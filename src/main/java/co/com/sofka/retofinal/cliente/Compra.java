@@ -8,7 +8,6 @@ import co.com.sofka.retofinal.genericos.Monto;
 import co.com.sofka.retofinal.vehiculo.values.VehiculoID;
 
 public class Compra extends Entity<CompraID> {
-    private final CompraID compraID;
     private final VehiculoID vehiculoID;
     private final EncargadoVentaID encargadoVentaID;
     private final FechaPago fechaPago;
@@ -17,15 +16,19 @@ public class Compra extends Entity<CompraID> {
     public Compra(CompraID compraID, VehiculoID vehiculoID,
                   EncargadoVentaID encargadoVentaID, FechaPago fechaPago, Monto monto) {
         super(compraID);
-        this.compraID = compraID;
         this.vehiculoID = vehiculoID;
         this.encargadoVentaID = encargadoVentaID;
         this.fechaPago = fechaPago;
         this.monto = monto;
     }
 
-    public CompraID compraID() {
-        return compraID;
+    public String detallesCompra() {
+        return "Detalles de la compra:\n" +
+                "Identificador de la Compra: " + this.entityId + "\n" +
+                "Identificador del Vehiculo: " + this.vehiculoID + "\n" +
+                "Identificador del Encargado de la Venta: " + this.encargadoVentaID + "\n" +
+                "Fecha del Pago: " + this.fechaPago + "\n" +
+                "Monto de la compra: " + this.monto;
     }
 
     public VehiculoID vehiculoID() {
