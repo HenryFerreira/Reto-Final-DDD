@@ -24,9 +24,9 @@ public class Direccion implements ValueObject<String> {
             throw new IllegalArgumentException("El numero de puerta no puede estar vacio");
         }
 
-        this.value = "Ciudad: " + this.ciudad + "\n" +
-                "Calle: " + this.ciudad + "\n" +
-                "Numero de puerta: " + this.nroPuerta;
+        this.value = "Ciudad: " + this.ciudad.value() + "\n" +
+                "Calle: " + this.calle.value() + "\n" +
+                "Numero de puerta: " + this.nroPuerta.value();
     }
 
     public String value() {
