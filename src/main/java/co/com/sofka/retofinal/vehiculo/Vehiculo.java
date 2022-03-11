@@ -1,7 +1,11 @@
 package co.com.sofka.retofinal.vehiculo;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.retofinal.encargadoventa.values.GarantiaID;
+import co.com.sofka.retofinal.vehiculo.events.GarantiaAsignada;
 import co.com.sofka.retofinal.vehiculo.events.VehiculoCreado;
+import co.com.sofka.retofinal.vehiculo.values.FechaEmision;
+import co.com.sofka.retofinal.vehiculo.values.FechaVigencia;
 import co.com.sofka.retofinal.vehiculo.values.VehiculoID;
 
 import java.util.Objects;
@@ -17,6 +21,13 @@ public class Vehiculo extends AggregateEvent<VehiculoID> {
         this.matriculacion = matriculacion;
     }
 
+    public void asignarGarantia(GarantiaID garantiaID, FechaEmision fechaEmision, FechaVigencia fechaVigencia) {
+        Objects.requireNonNull(garantiaID);
+        Objects.requireNonNull(fechaEmision);
+        Objects.requireNonNull(fechaVigencia);
+        appendChange(new GarantiaAsignada(garantiaID, fechaEmision, fechaVigencia)).apply();
+    }
+
     public void detallesMatriculacion() {
         System.out.println(this.matriculacion.detallesMatriculacion());
     }
@@ -26,9 +37,5 @@ public class Vehiculo extends AggregateEvent<VehiculoID> {
         System.out.println(this.fichaTecnica.identity().value());
         System.out.println(this.fichaTecnica.nombre().value());
         System.out.println(this.fichaTecnica.descripcion().value());
-    }
-
-    public void asignarGarantia(Garantia garantia) {
-        this.garantia = Objects.requireNonNull(garantia);
     }
 }
