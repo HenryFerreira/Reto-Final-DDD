@@ -42,11 +42,11 @@ public class Vehiculo extends AggregateEvent<VehiculoID> {
         appendChange(new GarantiaAsignada(garantiaID, fechaEmision, fechaVigencia)).apply();
     }
 
-    public void detallesMatriculacion() {
+    protected void detallesMatriculacion() {
         System.out.println(this.matriculacion.detallesMatriculacion());
     }
 
-    public void detallesFichaTecnica() {
+    protected void detallesFichaTecnica() {
         System.out.println("Detalles de la Ficha Tecnica: \n");
         System.out.println(this.fichaTecnica.identity().value());
         System.out.println(this.fichaTecnica.nombre().value());
