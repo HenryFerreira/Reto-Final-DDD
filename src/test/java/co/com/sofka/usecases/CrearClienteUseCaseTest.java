@@ -47,8 +47,6 @@ class CrearClienteUseCaseTest {
         Assertions.assertEquals("Henry Ferreira", event.getNombre().value());
         Assertions.assertEquals(direccionPrueba.value(), event.getDireccion().value());
         Assertions.assertEquals("xxxx", event.aggregateRootId());
-
-        System.out.println(event.getDireccion().value());
     }
 
 }
