@@ -1,10 +1,20 @@
 package co.com.sofka.retofinal.encargadoventa;
 
 import co.com.sofka.domain.generic.AggregateEvent;
-import co.com.sofka.retofinal.cliente.Compra;
+import co.com.sofka.retofinal.cliente.values.ClienteID;
 import co.com.sofka.retofinal.encargadoventa.events.EncargadoVentaCreado;
+import co.com.sofka.retofinal.encargadoventa.events.MetaAgregada;
+import co.com.sofka.retofinal.encargadoventa.events.NombreActualizado;
+import co.com.sofka.retofinal.encargadoventa.events.VentaAgregada;
+import co.com.sofka.retofinal.encargadoventa.values.Bonificacion;
 import co.com.sofka.retofinal.encargadoventa.values.EncargadoVentaID;
+import co.com.sofka.retofinal.encargadoventa.values.FechaVenta;
+import co.com.sofka.retofinal.encargadoventa.values.Objetivo;
+import co.com.sofka.retofinal.genericos.Monto;
 import co.com.sofka.retofinal.genericos.Nombre;
+import co.com.sofka.retofinal.vehiculo.values.MetaID;
+import co.com.sofka.retofinal.vehiculo.values.VehiculoID;
+import co.com.sofka.retofinal.vehiculo.values.VentaID;
 
 import java.util.List;
 import java.util.Objects;
@@ -17,7 +27,30 @@ public class EncargadoVenta extends AggregateEvent<EncargadoVentaID> {
 
     public EncargadoVenta(EncargadoVentaID encargadoVentaID, Nombre nombre) {
         super(encargadoVentaID);
+        Objects.requireNonNull(nombre);
         appendChange(new EncargadoVentaCreado(nombre)).apply();
+    }
+
+    public void agregarVenta(VentaID ventaID, VehiculoID vehiculoID, ClienteID clienteID,
+                             FechaVenta fechaVenta, Monto monto) {
+        Objects.requireNonNull(ventaID);
+        Objects.requireNonNull(vehiculoID);
+        Objects.requireNonNull(clienteID);
+        Objects.requireNonNull(fechaVenta);
+        Objects.requireNonNull(monto);
+        appendChange(new VentaAgregada(ventaID, vehiculoID, clienteID, fechaVenta, monto)).apply();
+    }
+
+    public void agregarMeta(MetaID metaID, Objetivo objetivo, Bonificacion bonificacion) {
+        Objects.requireNonNull(metaID);
+        Objects.requireNonNull(objetivo);
+        Objects.requireNonNull(bonificacion);
+        appendChange(new MetaAgregada(metaID, objetivo, bonificacion)).apply();
+    }
+
+    public void actualizarNombre(Nombre nombre) {
+        Objects.requireNonNull(nombre);
+        appendChange(new NombreActualizado(nombre)).apply();
     }
 
     public void listarVentas() {
@@ -35,16 +68,5 @@ public class EncargadoVenta extends AggregateEvent<EncargadoVentaID> {
         }
     }
 
-    public void agregarVenta(Venta venta) {
-        this.ventas.add(Objects.requireNonNull(venta));
-    }
-
-    public void agregarMeta(Meta meta) {
-        this.metas.add(Objects.requireNonNull(meta));
-    }
-
-    public void actualizarNombre(Nombre nombre) {
-        this.nombre = Objects.requireNonNull(nombre);
-    }
 
 }
