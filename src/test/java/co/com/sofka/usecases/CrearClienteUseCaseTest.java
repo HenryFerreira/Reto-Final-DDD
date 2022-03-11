@@ -10,10 +10,9 @@ import co.com.sofka.retofinal.genericos.direccion.Calle;
 import co.com.sofka.retofinal.genericos.direccion.Ciudad;
 import co.com.sofka.retofinal.genericos.direccion.Direccion;
 import co.com.sofka.retofinal.genericos.direccion.NroPuerta;
+import co.com.sofka.usecases.cliente.CrearClienteUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CrearClienteUseCaseTest {
     @Test

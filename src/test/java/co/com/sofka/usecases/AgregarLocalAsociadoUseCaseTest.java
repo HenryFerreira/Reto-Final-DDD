@@ -6,7 +6,6 @@ import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.retofinal.cliente.commands.AgregarLocalAsociado;
 import co.com.sofka.retofinal.cliente.events.ClienteCreado;
-import co.com.sofka.retofinal.cliente.events.CompraAgregada;
 import co.com.sofka.retofinal.cliente.events.LocalAsociadoAgregado;
 import co.com.sofka.retofinal.cliente.values.ClienteID;
 import co.com.sofka.retofinal.cliente.values.LocalAsociadoID;
@@ -16,6 +15,7 @@ import co.com.sofka.retofinal.genericos.direccion.Calle;
 import co.com.sofka.retofinal.genericos.direccion.Ciudad;
 import co.com.sofka.retofinal.genericos.direccion.Direccion;
 import co.com.sofka.retofinal.genericos.direccion.NroPuerta;
+import co.com.sofka.usecases.cliente.AgregarLocalAsociadoUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,8 +25,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class AgregarLocalAsociadoUseCaseTest {

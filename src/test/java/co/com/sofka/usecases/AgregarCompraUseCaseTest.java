@@ -18,6 +18,7 @@ import co.com.sofka.retofinal.genericos.direccion.Ciudad;
 import co.com.sofka.retofinal.genericos.direccion.Direccion;
 import co.com.sofka.retofinal.genericos.direccion.NroPuerta;
 import co.com.sofka.retofinal.vehiculo.values.VehiculoID;
+import co.com.sofka.usecases.cliente.AgregarCompraUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
