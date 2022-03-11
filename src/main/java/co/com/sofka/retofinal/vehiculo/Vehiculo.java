@@ -15,10 +15,16 @@ public class Vehiculo extends AggregateEvent<VehiculoID> {
     protected Matriculacion matriculacion;
     protected Garantia garantia;
 
-    public Vehiculo(VehiculoID entityId, Matriculacion matriculacion) {
-        super(entityId);
-        appendChange(new VehiculoCreado()).apply();
+    public Vehiculo(VehiculoID vehiculoID, Matriculacion matriculacion, FichaTecnica fichaTecnica) {
+        super(vehiculoID);
+        appendChange(new VehiculoCreado(matriculacion, fichaTecnica)).apply();
         this.matriculacion = matriculacion;
+        this.fichaTecnica = fichaTecnica;
+    }
+
+    private Vehiculo(VehiculoID vehiculoID) {
+        super(vehiculoID);
+        subscribe(new VehiculoChange(this));
     }
 
     public void asignarGarantia(GarantiaID garantiaID, FechaEmision fechaEmision, FechaVigencia fechaVigencia) {

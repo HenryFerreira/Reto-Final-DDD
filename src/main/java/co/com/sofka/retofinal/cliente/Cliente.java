@@ -29,6 +29,11 @@ public class Cliente extends AggregateEvent<ClienteID> {
         appendChange(new ClienteCreado(nombre, direccion)).apply();
     }
 
+    private Cliente(ClienteID clienteID) {
+        super(clienteID);
+        subscribe(new ClienteChange(this));
+    }
+
     public void agregarCompra(CompraID compraID, VehiculoID vehiculoID,
                               EncargadoVentaID encargadoVentaID, FechaPago fechaPago, Monto monto) {
         Objects.requireNonNull(compraID);

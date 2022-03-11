@@ -25,10 +25,16 @@ public class EncargadoVenta extends AggregateEvent<EncargadoVentaID> {
     protected LocalTrabajo localTrabajo;
     protected Nombre nombre;
 
-    public EncargadoVenta(EncargadoVentaID encargadoVentaID, Nombre nombre) {
+    public EncargadoVenta(EncargadoVentaID encargadoVentaID, Nombre nombre, LocalTrabajo localTrabajo) {
         super(encargadoVentaID);
         Objects.requireNonNull(nombre);
-        appendChange(new EncargadoVentaCreado(nombre)).apply();
+        Objects.requireNonNull(localTrabajo);
+        appendChange(new EncargadoVentaCreado(nombre, localTrabajo)).apply();
+    }
+
+    private EncargadoVenta(EncargadoVentaID encargadoVentaID) {
+        super(encargadoVentaID);
+        subscribe(new EncargadoVentaChange(this));
     }
 
     public void agregarVenta(VentaID ventaID, VehiculoID vehiculoID, ClienteID clienteID,
