@@ -24,23 +24,35 @@ public class Cliente extends AggregateEvent<ClienteID> {
 
     public Cliente(ClienteID clienteID, Nombre nombre, Direccion direccion) {
         super(clienteID);
+        Objects.requireNonNull(nombre);
+        Objects.requireNonNull(direccion);
         appendChange(new ClienteCreado(nombre, direccion)).apply();
     }
 
     public void agregarCompra(CompraID compraID, VehiculoID vehiculoID,
                               EncargadoVentaID encargadoVentaID, FechaPago fechaPago, Monto monto) {
+        Objects.requireNonNull(compraID);
+        Objects.requireNonNull(vehiculoID);
+        Objects.requireNonNull(encargadoVentaID);
+        Objects.requireNonNull(fechaPago);
+        Objects.requireNonNull(monto);
         appendChange(new CompraAgregada(compraID, vehiculoID, encargadoVentaID, fechaPago, monto)).apply();
     }
 
     public void agregarLocalAsociado(LocalAsociadoID localAsociadoID, Nombre nombre, List<Telefono> telefonos) {
+        Objects.requireNonNull(localAsociadoID);
+        Objects.requireNonNull(nombre);
+        Objects.requireNonNull(telefonos);
         appendChange(new LocalAsociadoAgregado(localAsociadoID, nombre, telefonos)).apply();
     }
 
     public void actualizarNombre(Nombre nombre) {
+        Objects.requireNonNull(nombre);
         appendChange(new NombreActualizado(nombre)).apply();
     }
 
     public void actualizarDirccion(Direccion direccion) {
+        Objects.requireNonNull(direccion);
         appendChange(new DireccionActualizada(direccion)).apply();
     }
 
