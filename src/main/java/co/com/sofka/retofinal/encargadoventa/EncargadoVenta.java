@@ -68,5 +68,19 @@ public class EncargadoVenta extends AggregateEvent<EncargadoVentaID> {
         }
     }
 
+    public List<Venta> ventas() {
+        return ventas;
+    }
 
+    public List<Meta> metas() {
+        return metas;
+    }
+
+    public LocalTrabajo localTrabajo() {
+        return localTrabajo;
+    }
+
+    public Nombre nombre() {
+        return nombre;
+    }
 }

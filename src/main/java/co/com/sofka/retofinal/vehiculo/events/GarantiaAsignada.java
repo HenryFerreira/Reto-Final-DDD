@@ -16,4 +16,16 @@ public class GarantiaAsignada extends DomainEvent {
         this.fechaEmision = fechaEmision;
         this.fechaVigencia = fechaVigencia;
     }
+
+    public GarantiaID getGarantiaID() {
+        return garantiaID;
+    }
+
+    public FechaEmision getFechaEmision() {
+        return fechaEmision;
+    }
+
+    public FechaVigencia getFechaVigencia() {
+        return fechaVigencia;
+    }
 }

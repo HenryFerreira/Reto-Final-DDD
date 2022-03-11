@@ -23,4 +23,24 @@ public class CompraAgregada extends DomainEvent {
         this.fechaPago = fechaPago;
         this.monto = monto;
     }
+
+    public CompraID getCompraID() {
+        return compraID;
+    }
+
+    public VehiculoID getVehiculoID() {
+        return vehiculoID;
+    }
+
+    public EncargadoVentaID getEncargadoVentaID() {
+        return encargadoVentaID;
+    }
+
+    public FechaPago getFechaPago() {
+        return fechaPago;
+    }
+
+    public Monto getMonto() {
+        return monto;
+    }
 }

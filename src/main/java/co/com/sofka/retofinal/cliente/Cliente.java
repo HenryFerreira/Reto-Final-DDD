@@ -69,4 +69,20 @@ public class Cliente extends AggregateEvent<ClienteID> {
             System.out.println(elemento.nombre().value());
         }
     }
+
+    public List<Compra> compras() {
+        return compras;
+    }
+
+    public List<LocalAsociado> localesAsociados() {
+        return localesAsociados;
+    }
+
+    public Nombre nombre() {
+        return nombre;
+    }
+
+    public Direccion direccion() {
+        return direccion;
+    }
 }

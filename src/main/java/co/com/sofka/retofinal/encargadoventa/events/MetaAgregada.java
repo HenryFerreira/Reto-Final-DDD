@@ -16,4 +16,16 @@ public class MetaAgregada extends DomainEvent {
         this.objetivo = objetivo;
         this.bonificacion = bonificacion;
     }
+
+    public MetaID getMetaID() {
+        return metaID;
+    }
+
+    public Objetivo getObjetivo() {
+        return objetivo;
+    }
+
+    public Bonificacion getBonificacion() {
+        return bonificacion;
+    }
 }

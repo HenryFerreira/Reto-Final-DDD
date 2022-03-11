@@ -10,4 +10,8 @@ public class NombreActualizado extends DomainEvent {
         super("sofka.encargadoventa.nombreactualizado");
         this.nombre = nombre;
     }
+
+    public Nombre getNombre() {
+        return nombre;
+    }
 }

@@ -38,4 +38,16 @@ public class Vehiculo extends AggregateEvent<VehiculoID> {
         System.out.println(this.fichaTecnica.nombre().value());
         System.out.println(this.fichaTecnica.descripcion().value());
     }
+
+    public FichaTecnica fichaTecnica() {
+        return fichaTecnica;
+    }
+
+    public Matriculacion matriculacion() {
+        return matriculacion;
+    }
+
+    public Garantia garantia() {
+        return garantia;
+    }
 }

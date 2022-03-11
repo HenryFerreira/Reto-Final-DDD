@@ -11,4 +11,8 @@ public class DireccionActualizada extends DomainEvent {
         super("sofka.cliente.DireccionActualizada");
         this.direccion = direccion;
     }
+
+    public Direccion getDireccion() {
+        return direccion;
+    }
 }

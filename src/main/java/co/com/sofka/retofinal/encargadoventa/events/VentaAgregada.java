@@ -24,4 +24,24 @@ public class VentaAgregada extends DomainEvent {
         this.fechaVenta = fechaVenta;
         this.monto = monto;
     }
+
+    public VentaID getVentaID() {
+        return ventaID;
+    }
+
+    public VehiculoID getVehiculoID() {
+        return vehiculoID;
+    }
+
+    public ClienteID getClienteID() {
+        return clienteID;
+    }
+
+    public FechaVenta getFechaVenta() {
+        return fechaVenta;
+    }
+
+    public Monto getMonto() {
+        return monto;
+    }
 }

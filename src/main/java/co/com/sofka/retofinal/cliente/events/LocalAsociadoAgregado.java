@@ -19,4 +19,16 @@ public class LocalAsociadoAgregado extends DomainEvent {
         this.nombre = nombre;
         this.telefonos = telefonos;
     }
+
+    public LocalAsociadoID getLocalAsociadoID() {
+        return localAsociadoID;
+    }
+
+    public Nombre getNombre() {
+        return nombre;
+    }
+
+    public List<Telefono> getTelefonos() {
+        return telefonos;
+    }
 }
