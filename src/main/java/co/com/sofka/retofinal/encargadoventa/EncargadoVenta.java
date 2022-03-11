@@ -67,14 +67,14 @@ public class EncargadoVenta extends AggregateEvent<EncargadoVentaID> {
         appendChange(new NombreActualizado(nombre)).apply();
     }
 
-    public void listarVentas() {
+    protected void listarVentas() {
         System.out.println("Lista de Ventas: \n");
         for (Venta elemento : this.ventas) {
             System.out.println(elemento.detallesVenta());
         }
     }
 
-    public void listarMetas() {
+    protected void listarMetas() {
         System.out.println("Lista de Metas: \n");
         for (Meta elemento : this.metas) {
             System.out.println("Objetivo: " + elemento.objetivo().value());
