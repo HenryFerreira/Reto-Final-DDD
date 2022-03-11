@@ -68,14 +68,14 @@ public class Cliente extends AggregateEvent<ClienteID> {
         appendChange(new DireccionActualizada(direccion)).apply();
     }
 
-    public void listarCompras() {
+    protected void listarCompras() {
         System.out.println("Lista de Compras: \n");
         for (Compra elemento : this.compras) {
             System.out.println(elemento.detallesCompra());
         }
     }
 
-    public void listarLocalesAsociados() {
+    protected void listarLocalesAsociados() {
         System.out.println("Lista de Locales Asociados: \n");
         for (LocalAsociado elemento : this.localesAsociados) {
             System.out.println(elemento.nombre().value());
