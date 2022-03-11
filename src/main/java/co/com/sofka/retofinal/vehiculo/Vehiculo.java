@@ -1,6 +1,7 @@
 package co.com.sofka.retofinal.vehiculo;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.retofinal.encargadoventa.values.GarantiaID;
 import co.com.sofka.retofinal.vehiculo.events.GarantiaAsignada;
 import co.com.sofka.retofinal.vehiculo.events.VehiculoCreado;
@@ -8,6 +9,7 @@ import co.com.sofka.retofinal.vehiculo.values.FechaEmision;
 import co.com.sofka.retofinal.vehiculo.values.FechaVigencia;
 import co.com.sofka.retofinal.vehiculo.values.VehiculoID;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Vehiculo extends AggregateEvent<VehiculoID> {
@@ -25,6 +27,12 @@ public class Vehiculo extends AggregateEvent<VehiculoID> {
     private Vehiculo(VehiculoID vehiculoID) {
         super(vehiculoID);
         subscribe(new VehiculoChange(this));
+    }
+
+    public static Vehiculo form(VehiculoID vehiculoID, List<DomainEvent> eventos) {
+        var vehiculo = new Vehiculo(vehiculoID);
+        eventos.forEach(vehiculo::applyEvent);
+        return vehiculo;
     }
 
     public void asignarGarantia(GarantiaID garantiaID, FechaEmision fechaEmision, FechaVigencia fechaVigencia) {

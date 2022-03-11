@@ -1,6 +1,7 @@
 package co.com.sofka.retofinal.cliente;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.retofinal.cliente.events.*;
 import co.com.sofka.retofinal.cliente.values.ClienteID;
 import co.com.sofka.retofinal.cliente.values.CompraID;
@@ -32,6 +33,12 @@ public class Cliente extends AggregateEvent<ClienteID> {
     private Cliente(ClienteID clienteID) {
         super(clienteID);
         subscribe(new ClienteChange(this));
+    }
+
+    public static Cliente form(ClienteID clienteID, List<DomainEvent> eventos) {
+        var cliente = new Cliente(clienteID);
+        eventos.forEach(cliente::applyEvent);
+        return cliente;
     }
 
     public void agregarCompra(CompraID compraID, VehiculoID vehiculoID,

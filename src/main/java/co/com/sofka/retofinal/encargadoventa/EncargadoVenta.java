@@ -1,6 +1,7 @@
 package co.com.sofka.retofinal.encargadoventa;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.retofinal.cliente.values.ClienteID;
 import co.com.sofka.retofinal.encargadoventa.events.EncargadoVentaCreado;
 import co.com.sofka.retofinal.encargadoventa.events.MetaAgregada;
@@ -35,6 +36,13 @@ public class EncargadoVenta extends AggregateEvent<EncargadoVentaID> {
     private EncargadoVenta(EncargadoVentaID encargadoVentaID) {
         super(encargadoVentaID);
         subscribe(new EncargadoVentaChange(this));
+    }
+
+    public static EncargadoVenta form(EncargadoVentaID encargadoVentaID, List<DomainEvent> eventos) {
+        var encargadoVenta = new EncargadoVenta(encargadoVentaID);
+        eventos.forEach(encargadoVenta::applyEvent);
+        return encargadoVenta;
+
     }
 
     public void agregarVenta(VentaID ventaID, VehiculoID vehiculoID, ClienteID clienteID,

@@ -17,7 +17,7 @@ public class VehiculoCreado extends DomainEvent {
     public Matriculacion getMatriculacion() {
         return matriculacion;
     }
-    
+
     public FichaTecnica getFichaTecnica() {
         return fichaTecnica;
     }
