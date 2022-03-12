@@ -69,7 +69,7 @@ public class EncargadoVenta extends AggregateEvent<EncargadoVentaID> {
         appendChange(new MetaAgregada(metaID, objetivo, bonificacion)).apply();
     }
 
-    public void agregarTelefonoLocalAsociado(Telefono telefono) {
+    public void agregarTelefonoLocalTrabajo(Telefono telefono) {
         Objects.requireNonNull(telefono);
         appendChange(new TelefonoLocalTrabajoAgregado(telefono)).apply();
     }
