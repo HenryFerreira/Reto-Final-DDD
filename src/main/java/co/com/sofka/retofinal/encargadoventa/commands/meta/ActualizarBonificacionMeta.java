@@ -1,11 +1,12 @@
 package co.com.sofka.retofinal.encargadoventa.commands.meta;
 
+import co.com.sofka.domain.generic.Command;
 import co.com.sofka.retofinal.encargadoventa.values.Bonificacion;
 import co.com.sofka.retofinal.encargadoventa.values.EncargadoVentaID;
 import co.com.sofka.retofinal.genericos.direccion.Direccion;
 import co.com.sofka.retofinal.vehiculo.values.MetaID;
 
-public class ActualizarBonificacionMeta {
+public class ActualizarBonificacionMeta extends Command {
     private final EncargadoVentaID encargadoVentaID;
     private final MetaID metaID;
     private final Bonificacion bonificacion;
