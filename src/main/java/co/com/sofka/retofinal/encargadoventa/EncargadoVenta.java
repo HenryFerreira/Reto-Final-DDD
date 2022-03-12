@@ -7,12 +7,19 @@ import co.com.sofka.retofinal.encargadoventa.events.EncargadoVentaCreado;
 import co.com.sofka.retofinal.encargadoventa.events.MetaAgregada;
 import co.com.sofka.retofinal.encargadoventa.events.NombreActualizado;
 import co.com.sofka.retofinal.encargadoventa.events.VentaAgregada;
+import co.com.sofka.retofinal.encargadoventa.events.localtrabajo.DireccionLocalTrabajoActualizada;
+import co.com.sofka.retofinal.encargadoventa.events.localtrabajo.NombreLocalTrabajoActualizado;
+import co.com.sofka.retofinal.encargadoventa.events.localtrabajo.TelefonoLocalTrabajoAgregado;
+import co.com.sofka.retofinal.encargadoventa.events.meta.BonificacionMetaActualizada;
+import co.com.sofka.retofinal.encargadoventa.events.meta.ObjetivoMetaActualizado;
 import co.com.sofka.retofinal.encargadoventa.values.Bonificacion;
 import co.com.sofka.retofinal.encargadoventa.values.EncargadoVentaID;
 import co.com.sofka.retofinal.encargadoventa.values.FechaVenta;
 import co.com.sofka.retofinal.encargadoventa.values.Objetivo;
 import co.com.sofka.retofinal.genericos.Monto;
 import co.com.sofka.retofinal.genericos.Nombre;
+import co.com.sofka.retofinal.genericos.Telefono;
+import co.com.sofka.retofinal.genericos.direccion.Direccion;
 import co.com.sofka.retofinal.vehiculo.values.MetaID;
 import co.com.sofka.retofinal.vehiculo.values.VehiculoID;
 import co.com.sofka.retofinal.vehiculo.values.VentaID;
@@ -60,6 +67,33 @@ public class EncargadoVenta extends AggregateEvent<EncargadoVentaID> {
         Objects.requireNonNull(objetivo);
         Objects.requireNonNull(bonificacion);
         appendChange(new MetaAgregada(metaID, objetivo, bonificacion)).apply();
+    }
+
+    public void agregarTelefonoLocalAsociado(Telefono telefono) {
+        Objects.requireNonNull(telefono);
+        appendChange(new TelefonoLocalTrabajoAgregado(telefono)).apply();
+    }
+
+    public void actualizarDireccionLocalTrabajo(Direccion direccion) {
+        Objects.requireNonNull(direccion);
+        appendChange(new DireccionLocalTrabajoActualizada(direccion)).apply();
+    }
+
+    public void actualizarNombreLocalTrabajo(Nombre nombre) {
+        Objects.requireNonNull(nombre);
+        appendChange(new NombreLocalTrabajoActualizado(nombre)).apply();
+    }
+
+    public void actualizarBonificacionMeta(MetaID metaID, Bonificacion bonificacion) {
+        Objects.requireNonNull(metaID);
+        Objects.requireNonNull(bonificacion);
+        appendChange(new BonificacionMetaActualizada(metaID, bonificacion)).apply();
+    }
+
+    public void actualizarObjetivoMeta(MetaID metaID, Objetivo objetivo) {
+        Objects.requireNonNull(metaID);
+        Objects.requireNonNull(objetivo);
+        appendChange(new ObjetivoMetaActualizado(metaID, objetivo)).apply();
     }
 
     public void actualizarNombre(Nombre nombre) {
