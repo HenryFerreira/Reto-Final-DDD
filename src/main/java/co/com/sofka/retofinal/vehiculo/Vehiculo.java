@@ -3,8 +3,13 @@ package co.com.sofka.retofinal.vehiculo;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.retofinal.encargadoventa.values.GarantiaID;
+import co.com.sofka.retofinal.genericos.Nombre;
 import co.com.sofka.retofinal.vehiculo.events.GarantiaAsignada;
 import co.com.sofka.retofinal.vehiculo.events.VehiculoCreado;
+import co.com.sofka.retofinal.vehiculo.events.fichatecnica.DescripcionFichaTecnicaActualizada;
+import co.com.sofka.retofinal.vehiculo.events.fichatecnica.NombreFichaTecnicaActualizado;
+import co.com.sofka.retofinal.vehiculo.events.garantia.FechaVigenciaGarantiaAsignada;
+import co.com.sofka.retofinal.vehiculo.values.Descripcion;
 import co.com.sofka.retofinal.vehiculo.values.FechaEmision;
 import co.com.sofka.retofinal.vehiculo.values.FechaVigencia;
 import co.com.sofka.retofinal.vehiculo.values.VehiculoID;
@@ -40,6 +45,21 @@ public class Vehiculo extends AggregateEvent<VehiculoID> {
         Objects.requireNonNull(fechaEmision);
         Objects.requireNonNull(fechaVigencia);
         appendChange(new GarantiaAsignada(garantiaID, fechaEmision, fechaVigencia)).apply();
+    }
+
+    public void asignarFechaVigenciaGarantia(FechaVigencia fechaVigencia) {
+        Objects.requireNonNull(fechaVigencia);
+        appendChange(new FechaVigenciaGarantiaAsignada(fechaVigencia)).apply();
+    }
+
+    public void actualizarNombreFichaTecnica(Nombre nombre) {
+        Objects.requireNonNull(nombre);
+        appendChange(new NombreFichaTecnicaActualizado(nombre)).apply();
+    }
+
+    public void actualizarDescripcionFichaTecnica(Descripcion descripcion) {
+        Objects.requireNonNull(descripcion);
+        appendChange(new DescripcionFichaTecnicaActualizada(descripcion)).apply();
     }
 
     protected void detallesMatriculacion() {
