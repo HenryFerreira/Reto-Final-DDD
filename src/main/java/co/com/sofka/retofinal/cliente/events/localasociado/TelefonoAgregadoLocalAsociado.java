@@ -2,17 +2,14 @@ package co.com.sofka.retofinal.cliente.events.localasociado;
 
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.retofinal.cliente.values.LocalAsociadoID;
-import co.com.sofka.retofinal.genericos.Nombre;
 import co.com.sofka.retofinal.genericos.Telefono;
 
-import java.util.List;
-
-public class TelefonoAgregado extends DomainEvent {
+public class TelefonoAgregadoLocalAsociado extends DomainEvent {
     private final LocalAsociadoID localAsociadoID;
     private final Telefono telefono;
 
-    public TelefonoAgregado(LocalAsociadoID localAsociadoID, Telefono telefono) {
-        super("sofka.cliente.telefonoagregado");
+    public TelefonoAgregadoLocalAsociado(LocalAsociadoID localAsociadoID, Telefono telefono) {
+        super("sofka.cliente.telefonoagregadoLocalasociado");
         this.localAsociadoID = localAsociadoID;
         this.telefono = telefono;
     }
