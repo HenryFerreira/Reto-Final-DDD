@@ -1,19 +1,21 @@
-package co.com.sofka.usecases;
+package co.com.sofka.usecases.cliente;
 
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.domain.generic.DomainEvent;
-import co.com.sofka.retofinal.cliente.commands.ActualizarNombre;
+import co.com.sofka.retofinal.cliente.commands.AgregarLocalAsociado;
 import co.com.sofka.retofinal.cliente.events.ClienteCreado;
-import co.com.sofka.retofinal.cliente.events.NombreActualizado;
+import co.com.sofka.retofinal.cliente.events.LocalAsociadoAgregado;
 import co.com.sofka.retofinal.cliente.values.ClienteID;
+import co.com.sofka.retofinal.cliente.values.LocalAsociadoID;
 import co.com.sofka.retofinal.genericos.Nombre;
+import co.com.sofka.retofinal.genericos.Telefono;
 import co.com.sofka.retofinal.genericos.direccion.Calle;
 import co.com.sofka.retofinal.genericos.direccion.Ciudad;
 import co.com.sofka.retofinal.genericos.direccion.Direccion;
 import co.com.sofka.retofinal.genericos.direccion.NroPuerta;
-import co.com.sofka.usecases.cliente.ActualizarNombreUseCase;
+import co.com.sofka.usecases.cliente.AgregarLocalAsociadoUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,23 +23,30 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
-class ActualizarNombreUseCaseTest {
+class AgregarLocalAsociadoUseCaseTest {
     @Mock
     DomainEventRepository repository;
 
     @Test
-    void actualizarNombre() {
-        //ARRANGE
+    void agregarLocalAsociado() {
         ClienteID clienteID = ClienteID.of("xxxx");
-        Nombre nombre = new Nombre("Haff Soul");
-        var comando = new ActualizarNombre(clienteID, nombre);
+        LocalAsociadoID localAsociadoID = LocalAsociadoID.of("yyyy");
+        Nombre nombre = new Nombre("Nhox Soul");
+        List<Telefono> telefonos = new ArrayList<>();
+        telefonos.add(new Telefono(123456789));
+        telefonos.add(new Telefono(987654321));
+        telefonos.add(new Telefono(111222333));
+
+        //ARRANGE
+        var comando = new AgregarLocalAsociado(clienteID, localAsociadoID, nombre, telefonos);
         Mockito.when(repository.getEventsBy(null)).thenReturn(events());
 
         //ACT
-        var useCase = new ActualizarNombreUseCase();
+        var useCase = new AgregarLocalAsociadoUseCase();
         useCase.addRepository(repository);
 
         var events = UseCaseHandler.getInstance()
@@ -46,12 +55,12 @@ class ActualizarNombreUseCaseTest {
                 .getDomainEvents();
 
         //ASSERT
-        var event = (NombreActualizado) events.get(0);
-        Assertions.assertEquals("sofka.cliente.nombreactualizado", event.type);
+        var event = (LocalAsociadoAgregado) events.get(0);
+        Assertions.assertEquals("sofka.cliente.localasociadoagregado", event.type);
+        Assertions.assertEquals("yyyy", event.getLocalAsociadoID().value());
         Assertions.assertEquals("xxxx", event.aggregateRootId());
-        Assertions.assertEquals("Haff Soul", event.getNombre().value());
-        Assertions.assertEquals("Haff Soul", event.getNombre().value());
-
+        Assertions.assertEquals("Nhox Soul", event.getNombre().value());
+        Assertions.assertEquals(123456789, event.getTelefonos().get(0).value());
     }
 
     private List<DomainEvent> events() {

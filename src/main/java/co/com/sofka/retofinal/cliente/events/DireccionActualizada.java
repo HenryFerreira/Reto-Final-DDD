@@ -8,7 +8,7 @@ public class DireccionActualizada extends DomainEvent {
     private final Direccion direccion;
 
     public DireccionActualizada(Direccion direccion) {
-        super("sofka.cliente.DireccionActualizada");
+        super("sofka.cliente.direccionactualizada");
         this.direccion = direccion;
     }
 

@@ -1,21 +1,24 @@
-package co.com.sofka.usecases;
+package co.com.sofka.usecases.cliente;
 
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.domain.generic.DomainEvent;
-import co.com.sofka.retofinal.cliente.commands.AgregarLocalAsociado;
+import co.com.sofka.retofinal.cliente.commands.AgregarCompra;
 import co.com.sofka.retofinal.cliente.events.ClienteCreado;
-import co.com.sofka.retofinal.cliente.events.LocalAsociadoAgregado;
+import co.com.sofka.retofinal.cliente.events.CompraAgregada;
 import co.com.sofka.retofinal.cliente.values.ClienteID;
-import co.com.sofka.retofinal.cliente.values.LocalAsociadoID;
+import co.com.sofka.retofinal.cliente.values.CompraID;
+import co.com.sofka.retofinal.cliente.values.FechaPago;
+import co.com.sofka.retofinal.encargadoventa.values.EncargadoVentaID;
+import co.com.sofka.retofinal.genericos.Monto;
 import co.com.sofka.retofinal.genericos.Nombre;
-import co.com.sofka.retofinal.genericos.Telefono;
 import co.com.sofka.retofinal.genericos.direccion.Calle;
 import co.com.sofka.retofinal.genericos.direccion.Ciudad;
 import co.com.sofka.retofinal.genericos.direccion.Direccion;
 import co.com.sofka.retofinal.genericos.direccion.NroPuerta;
-import co.com.sofka.usecases.cliente.AgregarLocalAsociadoUseCase;
+import co.com.sofka.retofinal.vehiculo.values.VehiculoID;
+import co.com.sofka.usecases.cliente.AgregarCompraUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,30 +26,30 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+
 @ExtendWith(MockitoExtension.class)
-class AgregarLocalAsociadoUseCaseTest {
+class AgregarCompraUseCaseTest {
     @Mock
     DomainEventRepository repository;
 
     @Test
-    void agregarLocalAsociado() {
-        ClienteID clienteID = ClienteID.of("xxxx");
-        LocalAsociadoID localAsociadoID = LocalAsociadoID.of("yyyy");
-        Nombre nombre = new Nombre("Nhox Soul");
-        List<Telefono> telefonos = new ArrayList<>();
-        telefonos.add(new Telefono(123456789));
-        telefonos.add(new Telefono(987654321));
-        telefonos.add(new Telefono(111222333));
-
+    void agregarCompra() {
         //ARRANGE
-        var comando = new AgregarLocalAsociado(clienteID, localAsociadoID, nombre, telefonos);
+        ClienteID clienteID = ClienteID.of("xxxx");
+        CompraID compraID = CompraID.of("xxxy");
+        VehiculoID vehiculoID = VehiculoID.of("xxyy");
+        EncargadoVentaID encargadoVentaID = EncargadoVentaID.of("xyyy");
+        FechaPago fechaPago = new FechaPago(new Date("03/11/2022"));
+        Monto monto = new Monto(18000D);
+
+        var comando = new AgregarCompra(clienteID, compraID, vehiculoID, encargadoVentaID, fechaPago, monto);
         Mockito.when(repository.getEventsBy(null)).thenReturn(events());
 
         //ACT
-        var useCase = new AgregarLocalAsociadoUseCase();
+        var useCase = new AgregarCompraUseCase();
         useCase.addRepository(repository);
 
         var events = UseCaseHandler.getInstance()
@@ -55,12 +58,14 @@ class AgregarLocalAsociadoUseCaseTest {
                 .getDomainEvents();
 
         //ASSERT
-        var event = (LocalAsociadoAgregado) events.get(0);
-        Assertions.assertEquals("sofka.cliente.localasociadoagregado", event.type);
-        Assertions.assertEquals("yyyy", event.getLocalAsociadoID().value());
-        Assertions.assertEquals("xxxx", event.aggregateRootId());
-        Assertions.assertEquals("Nhox Soul", event.getNombre().value());
-        Assertions.assertEquals(123456789, event.getTelefonos().get(0).value());
+        var event = (CompraAgregada) events.get(0);
+        Assertions.assertEquals("sofka.cliente.compraagregada", event.type);
+        Assertions.assertEquals("xxxy", event.getCompraID().value());
+        Assertions.assertEquals("xxyy", event.getVehiculoID().value());
+        Assertions.assertEquals("xyyy", event.getEncargadoVentaID().value());
+        Assertions.assertEquals(new FechaPago(new Date("03/11/2022")).value(), event.getFechaPago().value());
+        Assertions.assertEquals(18000D, event.getMonto().value());
+
     }
 
     private List<DomainEvent> events() {
