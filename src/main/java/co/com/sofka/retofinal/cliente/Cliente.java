@@ -3,6 +3,8 @@ package co.com.sofka.retofinal.cliente;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.retofinal.cliente.events.*;
+import co.com.sofka.retofinal.cliente.events.localasociado.NombreLocalAsociadoActualizado;
+import co.com.sofka.retofinal.cliente.events.localasociado.TelefonoAgregado;
 import co.com.sofka.retofinal.cliente.values.ClienteID;
 import co.com.sofka.retofinal.cliente.values.CompraID;
 import co.com.sofka.retofinal.cliente.values.FechaPago;
@@ -56,6 +58,18 @@ public class Cliente extends AggregateEvent<ClienteID> {
         Objects.requireNonNull(nombre);
         Objects.requireNonNull(telefonos);
         appendChange(new LocalAsociadoAgregado(localAsociadoID, nombre, telefonos)).apply();
+    }
+
+    public void agregarTelefono(LocalAsociadoID localAsociadoID, Telefono telefono) {
+        Objects.requireNonNull(localAsociadoID);
+        Objects.requireNonNull(telefono);
+        appendChange(new TelefonoAgregado(localAsociadoID, telefono)).apply();
+    }
+
+    public void actualizarNombreLocalAsociado(LocalAsociadoID localAsociadoID, Nombre nombre) {
+        Objects.requireNonNull(localAsociadoID);
+        Objects.requireNonNull(nombre);
+        appendChange(new NombreLocalAsociadoActualizado(localAsociadoID, nombre)).apply();
     }
 
     public void actualizarNombre(Nombre nombre) {
